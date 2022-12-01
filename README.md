@@ -1,4 +1,4 @@
-# spark-ar-animation-cloner
+# meta-spark-animation-cloner
 
 Allows to clone animations (position, rotation, scale) from one objects to another in Spark AR.
 
