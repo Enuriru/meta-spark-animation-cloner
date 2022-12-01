@@ -36,13 +36,13 @@ export class AnimationCloner {
       position: true,
       rotation: true,
       scale: true,
-      world: true,
+      world: false,
 
       elements: false,
       elementsPosition: true,
       elementsRotation: true,
       elementsScale: true,
-      elementsWorld: true,
+      elementsWorld: false,
       
     }
 
