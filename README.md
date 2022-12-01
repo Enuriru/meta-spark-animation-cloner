@@ -1,6 +1,6 @@
 # meta-spark-animation-cloner
 
-Allows to clone animations (position, rotation, scale) from one objects to another in Spark AR.
+Allows to clone animations (position, rotation, scale) from one object to another in Meta Spark.
 
 
 ```javascript
@@ -35,8 +35,8 @@ You can control which properties to clone:
 Instead of scene object names, you can pass just objects. Useful if you already retrieved objects in loop or other function:
 
 ```javascript
-  const sphere0 = await S.root.find('sphere0')
-  const sphere1_clone = await S.root.find('sphere1_clone')
+  const sphere0 = await S.root.findFirst('sphere0')
+  const sphere1_clone = await S.root.findFirst('sphere1_clone')
   
   AnimationCloner.create(sphere0, sphere1_clone)
 ```
