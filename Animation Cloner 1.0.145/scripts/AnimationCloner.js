@@ -33,6 +33,7 @@ export class AnimationCloner {
   async init(from, to, options) {
 
     let defaults = {
+      object: true,
       position: true,
       rotation: true,
       scale: true,
@@ -56,9 +57,11 @@ export class AnimationCloner {
 
     let space = this.options.world ? 'worldTransform' : 'transform'
 
-    if (this.options.position) this.to[space].position = this.from[space].position
-    if (this.options.rotation) this.to[space].rotation = this.from[space].rotation
-    if (this.options.scale) this.to[space].scale = this.from[space].scale
+    if (this.options.object) {
+      if (this.options.position) this.to[space].position = this.from[space].position
+      if (this.options.rotation) this.to[space].rotation = this.from[space].rotation
+      if (this.options.scale) this.to[space].scale = this.from[space].scale
+    }
 
     // 
 
@@ -66,6 +69,8 @@ export class AnimationCloner {
 
       this.fromElements = await this.from.findByPath(this.options.elements)
       this.toElements = await this.to.findByPath(this.options.elements)
+      if (this.fromElements.length != this.toElements.length) throw "Element count in From and To object must be tha same"
+
       space = this.options.elementsWorld ? 'worldTransform' : 'transform'
 
       for (let index in this.fromElements) {
@@ -82,6 +87,8 @@ export class AnimationCloner {
     }
 
     this._inited = true
+
+    return this
 
 
   }
@@ -120,7 +127,7 @@ export class AnimationCloner {
 
 
 /**
- * 
+ * Creates and returns a new animation cloner object, asynchronously 
  * @param {String | SceneObject} from 
  * @param {String | SceneObject} to 
  * @param {Object} options 

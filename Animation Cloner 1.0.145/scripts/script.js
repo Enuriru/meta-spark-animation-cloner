@@ -9,12 +9,16 @@ import { AnimationCloner } from './AnimationCloner.js'
 
 (async function () { 
 
-  // Mirror animation from sphere0 to sphere1_clone
+  // Mirror animation from sphere0 to sphere0_clone
 
-  AnimationCloner.create('sphere0', 'sphere1_clone', {
-    world: false // transforms are in local space
+  AnimationCloner.create('sphere', 'sphere_clone')
+
+
+  // Mirror animation from struct to struct_clone, including elements inside which have "plane*" names
+
+  AnimationCloner.create('struct', 'struct_clone', {
+    elements: '**/plane*',
   })
-
   
 
 })(); 
